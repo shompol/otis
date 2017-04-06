@@ -1,0 +1,46 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}MetaMaint{% endblock %}
+
+{% block styles %}
+{{super()}}
+<style TYPE="text/css">
+ select {font-family:Consolas;}
+</style>
+{% endblock %}
+
+{% block navbar %}
+<div class="navbar navbar-fixed-top">
+    <!-- ... -->
+</div>
+{% endblock %}
+
+{% block content %}
+<h2>MetaMaint</h2>
+
+<form method="POST" action="/">
+    {{ form.csrf_token }}
+    {{ form.hidden_tag() }}
+
+    <table>
+        <tr><td>{{ form.cdb.label }}</td><td>{{ form.cdb(id="select_cdb") }}</td></tr>
+        <tr><td>{{ form.lst.label }}</td><td>{{ form.lst(id="select_lst") }}</td></tr>
+    </table>
+    
+    {#{ form.name.label }} {{ form.name(size=20) }#}
+    {#{ form.lname.label }} {{ form.lname(size=20) }#} 
+    <input type="submit" value="Go">
+</form>
+
+
+{% block scripts %}
+<!--script src="{{url_for('.static', filename='myscripts.js')}}"></script-->
+
+
+<script src="{{url_for('.static', filename='triggers.js')}}"></script>
+
+{{super()}}
+{% endblock %}
+
+
+
+{% endblock %}
